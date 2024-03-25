@@ -12,7 +12,7 @@ int _printf(const char *format, ...)
 	int i = 0;
 	int count = 0;
 
-	while (format[i] != NULL)
+	while (format[i] != '\0')
 	{
 		if (format[i] == '%')
 		{
