@@ -25,19 +25,29 @@ int _printf(const char *format, ...)
 			i += 1;
 			if (format[i] == 'c')
 			{
-				va_start(args, format);
+				if (is_args == 0)
+					va_start(args, format);
 				is_args = 1;
 				count += print_char(&args);
 			}
+			else if ((format[i] == 'i') || (format[i] == 'd'))
+			{
+				if (is_args == 0)
+					va_start(args, format);
+				is_args = 1;
+				count += print_int(&args);
+			}
 			else if (format[i] == 's')
 			{
-				va_start(args, format);
+				if (is_args == 0)
+					va_start(args, format);
 				is_args = 1;
 				count += print_string(&args);
 			}
 			else if (format[i] == '%')
 			{
-				va_start(args, format);
+				if (is_args == 0)
+					va_start(args, format);
 				is_args = 1;
 				count += print_percent(&args);
 			}
