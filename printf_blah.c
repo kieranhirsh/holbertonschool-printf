@@ -46,6 +46,25 @@ int _printf(const char *format, ...)
 						}
 						break;
 					}
+				case 'i': /* to print %i */
+				case 'd': /* to print %d */
+					{
+						int d = va_arg(args, int);
+
+						if (d < 0)
+						{
+							putchar('-');
+							d = d * (-1);
+						}
+
+						while (d != 0)
+						{
+							putchar(d % 10 + '0');
+							d = d / 10;
+							count++;
+						}
+						break;
+					}
 				case '%': /* to print %% */
 					{
 						putchar('%');
