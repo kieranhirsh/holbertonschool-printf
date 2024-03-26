@@ -1,6 +1,7 @@
 #include "main.h"
 #include <stdarg.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 /**
  * print_char - prints a char
@@ -27,22 +28,36 @@ int print_char(va_list *args)
  */
 int print_int(va_list *args)
 {
-	int count = 0;
+	char *buffer;
+	int count = 0, mult = 1, i = 0;
 	int d = va_arg(*args, int);
+
+	buffer = malloc(sizeof(char) * 1024);
+	if (buffer == NULL)
+		return (0);
 
 	if (d < 0)
 	{
 		putchar('-');
-		d = d * (-1);
+		mult = -1;
 		count += 1;
 	}
 
 	while (d != 0)
 	{
-		putchar(d % 10 + '0');
+		buffer[i] = ((d % 10) * mult) + 48;
 		d = d / 10;
-		count += 1;
+		i += 1;
 	}
+
+	while (i > 0)
+	{
+		putchar(buffer[i - 1]);
+		count += 1;
+		i -= 1;
+	}
+
+	free(buffer);
 
 	return (count);
 }
