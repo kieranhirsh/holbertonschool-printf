@@ -79,7 +79,7 @@ int print_string(va_list *args)
 			putchar(s[len]);
 			len += 1;
 		}
-		return (len - 1);
+		return (len);
 	}
 	else if (!s)
 	{
