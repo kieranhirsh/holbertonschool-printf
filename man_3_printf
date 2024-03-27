@@ -1,13 +1,25 @@
 .TH _printf 1 "March 2024" version 1.0
 
 .SH NAME
+_printf
 
 .SH SYNOPSIS
 
 .SH DESCRIPTION
+The _printf function is a simplified implementation of the standard printf function found in the C standard library. 
+
+.SH USAGE
+To use _printf, include the "main.h" header file in your code. Then, call _printf with the format string and any arguments you want to print. The format string can contain placeholders like:
+- %d - for integers
+- %c - for characters
+- %s - for strings
+- %% - for a literal character
+After calling _printf, it returns the number of characters printed.
+
+.SH RETURN VALUES
+After calling _printf, it returns the number of characters printed, excluding the '\0' terminator for strings.
 
 .SH AUTHOR
-Written by Kieran Hirsh and Krisha Valencia
+Written by Kieran Hirsh
+Krisha Valencia
 
-.SH COPYRIGHT
-Copyright \(2024)
