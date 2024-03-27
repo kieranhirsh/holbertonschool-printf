@@ -35,8 +35,12 @@ int _printf(const char *format, ...)
 			if (ops[j].func == NULL)
 			{
 				putchar('%');
-				putchar(format[i]);
-				count += 2;
+				count += 1;
+				if (format[i] != '\0')
+				{
+					putchar(format[i]);
+					count += 1;
+				}
 			}
 			else
 			{
