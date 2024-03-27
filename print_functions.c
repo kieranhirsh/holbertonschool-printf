@@ -30,6 +30,12 @@ int print_int(va_list *args)
 	int count = 0, mult = 1, i = 0;
 	int d = va_arg(*args, int);
 
+	if (d == 0)
+	{
+		putchar('0');
+		return (1);
+	}
+
 	buffer = malloc(sizeof(char) * 1024);
 	if (buffer == NULL)
 		return (0);
