@@ -47,15 +47,14 @@ int _printf(const char *format, ...)
 				}
 				count += ops[j].func(&args);
 			}
-
-			i += 1;
 		}
 		else
 		{
 			putchar(format[i]);
 			count += 1;
-			i += 1;
 		}
+
+		i += 1;
 	}
 
 	if (is_args)

@@ -8,7 +8,6 @@
  * @args: the char to be printed
  *
  * Return: On success, the number of characters printed
- *         On error, -1 is returned, and errno is set appropriately.
  */
 int print_char(va_list *args)
 {
@@ -24,7 +23,6 @@ int print_char(va_list *args)
  * @args: the int to be printed
  *
  * Return: On success, the number of characters printed
- *         On error, -1 is returned, and errno is set appropriately.
  */
 int print_int(va_list *args)
 {
@@ -67,21 +65,33 @@ int print_int(va_list *args)
  * @args: the string to be printed
  *
  * Return: On success, the number of characters printed
- *         On error, -1 is returned, and errno is set appropriately.
+ *         On error, -1
  */
 int print_string(va_list *args)
 {
-	int len = 0, count = 0;
+	int len = 0;
 	char *s = va_arg(*args, char *);
 
-	while (s[len] != '\0')
+	if (s)
 	{
-		putchar(s[len]);
-		len += 1;
-		count += 1;
+		while (s[len] != '\0')
+		{
+			putchar(s[len]);
+			len += 1;
+		}
+		return (len - 1);
+	}
+	else if (!s)
+	{
+		printf("(null)");
+		return (6);
+	}
+	else
+	{
+		printf("s both exists and doesn't exist");
+		return (-1);
 	}
 
-	return (count);
 }
 
 /**
@@ -89,7 +99,6 @@ int print_string(va_list *args)
  * @args: unused
  *
  * Return: On success, the number of characters printed
- *         On error, -1 is returned, and errno is set appropriately.
  */
 int print_percent(va_list *args)
 {
