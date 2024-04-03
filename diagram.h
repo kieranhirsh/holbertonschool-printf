@@ -1,1 +1,0 @@
-## Our project logic diagram
